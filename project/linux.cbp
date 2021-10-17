@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="EOSource" />
+		<Option platforms="Unix;" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="DEBUG+MYSQL+SQLITE">
+				<Option output="../eoserv-debug" prefix_auto="1" extension_auto="1" />
+				<Option working_dir=".." />
+				<Option object_output="../obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-D_GLIBCXX_DEBUG" />
+					<Add option="-D_GLIBCXX_DEBUG_PEDANTIC" />
+					<Add option="-DDEBUG" />
+					<Add option="-DDATABASE_DEBUG" />
+					<Add option="-DDATABASE_MYSQL" />
+					<Add option="-DDATABASE_SQLITE" />
+				</Compiler>
+				<Linker>
+					<Add library="mariadb" />
+					<Add library="sqlite3" />
+				</Linker>
+			</Target>
+			<Target title="DEBUG+MYSQL">
+				<Option output="../eoserv-debug" prefix_auto="1" extension_auto="1" />
+				<Option working_dir=".." />
+				<Option object_output="../obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-D_GLIBCXX_DEBUG" />
+					<Add option="-D_GLIBCXX_DEBUG_PEDANTIC" />
+					<Add option="-DDEBUG" />
+					<Add option="-DDATABASE_DEBUG" />
+					<Add option="-DDATABASE_MYSQL" />
+				</Compiler>
+				<Linker>
+					<Add library="mariadb" />
+				</Linker>
+			</Target>
+			<Target title="DEBUG+SQLITE">
+				<Option output="../eoserv-debug" prefix_auto="1" extension_auto="1" />
+				<Option working_dir=".." />
+				<Option object_output="../obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-D_GLIBCXX_DEBUG" />
+					<Add option="-D_GLIBCXX_DEBUG_PEDANTIC" />
+					<Add option="-DDEBUG" />
+					<Add option="-DDATABASE_DEBUG" />
+					<Add option="-DDATABASE_SQLITE" />
+				</Compiler>
+				<Linker>
+					<Add library="sqlite3" />
+				</Linker>
+			</Target>
+			<Target title="MYSQL+SQLITE">
+				<Option output="../eoserv" prefix_auto="1" extension_auto="1" />
+				<Option working_dir=".." />
+				<Option object_output="../obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O3" />
+					<Add option="-DDATABASE_MYSQL" />
+					<Add option="-DDATABASE_SQLITE" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="mariadb" />
+					<Add library="sqlite3" />
+				</Linker>
+			</Target>
+			<Target title="MYSQL">
+				<Option output="../eoserv" prefix_auto="1" extension_auto="1" />
+				<Option working_dir=".." />
+				<Option object_output="../obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O3" />
+					<Add option="-DDATABASE_MYSQL" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="mysqlclient" />
+				</Linker>
+			</Target>
+			<Target title="SQLITE">
+				<Option output="../eoserv" prefix_auto="1" extension_auto="1" />
+				<Option working_dir=".." />
+				<Option object_output="../obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O3" />
+					<Add option="-DDATABASE_SQLITE" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="sqlite3" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wextra" />
+			<Add option="-Wall" />
+			<Add option="-std=gnu++0x" />
+			<Add option="-include stdafx.h" />
+			<Add option="-lstdc++" />
+			<Add option="-lgcc" />
+			<Add option="-lodbc32" />
+			<Add option="-lwsock32" />
+			<Add option="-lwinspool" />
+			<Add option="-lwinmm" />
+			<Add option="-lshell32" />
+			<Add option="-lcomctl32" />
+			<Add option="-lctl3d32" />
+			<Add option="-lodbc32" />
+			<Add option="-ladvapi32" />
+			<Add option="-lodbc32" />
+			<Add option="-lwsock32" />
+			<Add option="-lopengl32" />
+			<Add option="-lglu32" />
+			<Add option="-lole32" />
+			<Add option="-loleaut32" />
+			<Add option="-luuid" />
+			<Add option="-DEOSERV_PROJECT" />
+			<Add option="-DEOSERV_PROJECT_CBP" />
+			<Add directory="/usr/include/mariadb" />
+			<Add directory="../src/" />
+		</Compiler>
+		<Linker>
+			<Add library="pthread" />
+			<Add library="rt" />
+		</Linker>
+		<Unit filename="../src/EOPlus/context.cpp" />
+		<Unit filename="../src/EOPlus/context.hpp" />
+		<Unit filename="../src/EOPlus/extras/context.hpp" />
+		<Unit filename="../src/EOPlus/extras/lex.hpp" />
+		<Unit filename="../src/EOPlus/extras/parse.hpp" />
+		<Unit filename="../src/EOPlus/lex.cpp" />
+		<Unit filename="../src/EOPlus/lex.hpp" />
+		<Unit filename="../src/EOPlus/parse.cpp" />
+		<Unit filename="../src/EOPlus/parse.hpp" />
+		<Unit filename="../src/arena.cpp" />
+		<Unit filename="../src/arena.hpp" />
+		<Unit filename="../src/character.cpp" />
+		<Unit filename="../src/character.hpp" />
+		<Unit filename="../src/chat.cpp" />
+		<Unit filename="../src/chat.hpp" />
+		<Unit filename="../src/command.cpp" />
+		<Unit filename="../src/command.hpp" />
+		<Unit filename="../src/commands.cpp" />
+		<Unit filename="../src/commands.hpp" />
+		<Unit filename="../src/commands/admins/admins.cpp" />
+		<Unit filename="../src/commands/admins/admins.hpp" />
+		<Unit filename="../src/commands/admins/debug.cpp" />
+		<Unit filename="../src/commands/admins/info.cpp" />
+		<Unit filename="../src/commands/admins/map.cpp" />
+		<Unit filename="../src/commands/admins/mods.cpp" />
+		<Unit filename="../src/commands/admins/novelty.cpp" />
+		<Unit filename="../src/commands/admins/server.cpp" />
+		<Unit filename="../src/commands/admins/warp.cpp" />
+		<Unit filename="../src/commands/players/debug.cpp" />
+		<Unit filename="../src/commands/players/info.cpp" />
+		<Unit filename="../src/commands/players/novelty.cpp" />
+		<Unit filename="../src/commands/players/pets.cpp" />
+		<Unit filename="../src/commands/players/players.cpp" />
+		<Unit filename="../src/commands/players/players.hpp" />
+		<Unit filename="../src/commands/players/profession.cpp" />
+		<Unit filename="../src/config.cpp" />
+		<Unit filename="../src/config.hpp" />
+		<Unit filename="../src/console.cpp" />
+		<Unit filename="../src/console.hpp" />
+		<Unit filename="../src/database.cpp" />
+		<Unit filename="../src/database.hpp" />
+		<Unit filename="../src/dialog.cpp" />
+		<Unit filename="../src/dialog.hpp" />
+		<Unit filename="../src/eoclient.cpp" />
+		<Unit filename="../src/eoclient.hpp" />
+		<Unit filename="../src/eodata.cpp" />
+		<Unit filename="../src/eodata.hpp" />
+		<Unit filename="../src/eoplus.cpp" />
+		<Unit filename="../src/eoplus.hpp" />
+		<Unit filename="../src/eoserver.cpp" />
+		<Unit filename="../src/eoserver.hpp" />
+		<Unit filename="../src/eosource.cpp" />
+		<Unit filename="../src/eosource.hpp" />
+		<Unit filename="../src/extra/arena.hpp" />
+		<Unit filename="../src/extra/character.hpp" />
+		<Unit filename="../src/extra/command.hpp" />
+		<Unit filename="../src/extra/commands.hpp" />
+		<Unit filename="../src/extra/config.hpp" />
+		<Unit filename="../src/extra/console.hpp" />
+		<Unit filename="../src/extra/database.hpp" />
+		<Unit filename="../src/extra/dialog.hpp" />
+		<Unit filename="../src/extra/eoclient.hpp" />
+		<Unit filename="../src/extra/eodata.hpp" />
+		<Unit filename="../src/extra/eoplus.hpp" />
+		<Unit filename="../src/extra/eoserver.hpp" />
+		<Unit filename="../src/extra/guild.hpp" />
+		<Unit filename="../src/extra/hook.hpp" />
+		<Unit filename="../src/extra/i18n.hpp" />
+		<Unit filename="../src/extra/map.hpp" />
+		<Unit filename="../src/extra/nanohttp.hpp" />
+		<Unit filename="../src/extra/npc.hpp" />
+		<Unit filename="../src/extra/ntservice.cpp" />
+		<Unit filename="../src/extra/ntservice.hpp" />
+		<Unit filename="../src/extra/packet.hpp" />
+		<Unit filename="../src/extra/party.hpp" />
+		<Unit filename="../src/extra/player.hpp" />
+		<Unit filename="../src/extra/quest.hpp" />
+		<Unit filename="../src/extra/seose.cpp" />
+		<Unit filename="../src/extra/seose.hpp" />
+		<Unit filename="../src/extra/sln.hpp" />
+		<Unit filename="../src/extra/socket.hpp" />
+		<Unit filename="../src/extra/timer.hpp" />
+		<Unit filename="../src/extra/world.hpp" />
+		<Unit filename="../src/graphics.cpp" />
+		<Unit filename="../src/graphics.hpp" />
+		<Unit filename="../src/guild.cpp" />
+		<Unit filename="../src/guild.hpp" />
+		<Unit filename="../src/handlers/Account.cpp" />
+		<Unit filename="../src/handlers/AdminInteract.cpp" />
+		<Unit filename="../src/handlers/Attack.cpp" />
+		<Unit filename="../src/handlers/Bank.cpp" />
+		<Unit filename="../src/handlers/Barber.cpp" />
+		<Unit filename="../src/handlers/Board.cpp" />
+		<Unit filename="../src/handlers/Book.cpp" />
+		<Unit filename="../src/handlers/Chair.cpp" />
+		<Unit filename="../src/handlers/Character.cpp" />
+		<Unit filename="../src/handlers/Chest.cpp" />
+		<Unit filename="../src/handlers/Citizen.cpp" />
+		<Unit filename="../src/handlers/Commands.cpp" />
+		<Unit filename="../src/handlers/Connection.cpp" />
+		<Unit filename="../src/handlers/Door.cpp" />
+		<Unit filename="../src/handlers/Emote.cpp" />
+		<Unit filename="../src/handlers/Face.cpp" />
+		<Unit filename="../src/handlers/Global.cpp" />
+		<Unit filename="../src/handlers/Guild.cpp" />
+		<Unit filename="../src/handlers/Init.cpp" />
+		<Unit filename="../src/handlers/Internal.cpp" />
+		<Unit filename="../src/handlers/Item.cpp" />
+		<Unit filename="../src/handlers/Jukebox.cpp" />
+		<Unit filename="../src/handlers/Law.cpp" />
+		<Unit filename="../src/handlers/Locker.cpp" />
+		<Unit filename="../src/handlers/Login.cpp" />
+		<Unit filename="../src/handlers/Message.cpp" />
+		<Unit filename="../src/handlers/Paperdoll.cpp" />
+		<Unit filename="../src/handlers/Party.cpp" />
+		<Unit filename="../src/handlers/Players.cpp" />
+		<Unit filename="../src/handlers/Priest.cpp" />
+		<Unit filename="../src/handlers/Quest.cpp" />
+		<Unit filename="../src/handlers/Refresh.cpp" />
+		<Unit filename="../src/handlers/Shop.cpp" />
+		<Unit filename="../src/handlers/Sit.cpp" />
+		<Unit filename="../src/handlers/Spell.cpp" />
+		<Unit filename="../src/handlers/StatSkill.cpp" />
+		<Unit filename="../src/handlers/Talk.cpp" />
+		<Unit filename="../src/handlers/Trade.cpp" />
+		<Unit filename="../src/handlers/Walk.cpp" />
+		<Unit filename="../src/handlers/Warp.cpp" />
+		<Unit filename="../src/handlers/Welcome.cpp" />
+		<Unit filename="../src/handlers/handlers.cpp" />
+		<Unit filename="../src/handlers/handlers.hpp" />
+		<Unit filename="../src/hash.cpp" />
+		<Unit filename="../src/hash.hpp" />
+		<Unit filename="../src/i18n.cpp" />
+		<Unit filename="../src/i18n.hpp" />
+		<Unit filename="../src/implies/database.hpp" />
+		<Unit filename="../src/implies/socket.hpp" />
+		<Unit filename="../src/main.cpp" />
+		<Unit filename="../src/map.cpp" />
+		<Unit filename="../src/map.hpp" />
+		<Unit filename="../src/nanohttp.cpp" />
+		<Unit filename="../src/nanohttp.hpp" />
+		<Unit filename="../src/npc.cpp" />
+		<Unit filename="../src/npc.hpp" />
+		<Unit filename="../src/packet.cpp" />
+		<Unit filename="../src/packet.hpp" />
+		<Unit filename="../src/party.cpp" />
+		<Unit filename="../src/party.hpp" />
+		<Unit filename="../src/platform.h" />
+		<Unit filename="../src/player.cpp" />
+		<Unit filename="../src/player.hpp" />
+		<Unit filename="../src/quest.cpp" />
+		<Unit filename="../src/quest.hpp" />
+		<Unit filename="../src/rpn.cpp" />
+		<Unit filename="../src/rpn.hpp" />
+		<Unit filename="../src/secure.hpp" />
+		<Unit filename="../src/sha256.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../src/sha256.h" />
+		<Unit filename="../src/sln.cpp" />
+		<Unit filename="../src/sln.hpp" />
+		<Unit filename="../src/socket.cpp" />
+		<Unit filename="../src/socket.hpp" />
+		<Unit filename="../src/stdafx.h" />
+		<Unit filename="../src/text.cpp" />
+		<Unit filename="../src/text.hpp" />
+		<Unit filename="../src/timer.cpp" />
+		<Unit filename="../src/timer.hpp" />
+		<Unit filename="../src/util.cpp" />
+		<Unit filename="../src/util.hpp" />
+		<Unit filename="../src/variant.cpp" />
+		<Unit filename="../src/variant.hpp" />
+		<Unit filename="../src/version.h" />
+		<Unit filename="../src/world.cpp" />
+		<Unit filename="../src/world.hpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<DoxyBlocks>
+				<comment_style block="0" line="0" />
+				<doxyfile_project />
+				<doxyfile_build />
+				<doxyfile_warnings />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

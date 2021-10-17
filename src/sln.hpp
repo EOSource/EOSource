@@ -1,0 +1,25 @@
+#ifndef SLN_HPP_INCLUDED
+#define SLN_HPP_INCLUDED
+
+#include "fwd/sln.hpp"
+#include "fwd/eoserver.hpp"
+
+/**
+ * Manages checking in with the SLN server regularly
+ */
+class SLN
+{
+	private:
+		EOServer* server;
+
+		void RequestTick();
+		static void* RequestThread(void* void_request);
+		static void TimedRequest(void* void_sln);
+		static void TimedCleanup(void* void_request);
+
+	public:
+		SLN(EOServer* server);
+		void Request();
+};
+
+#endif

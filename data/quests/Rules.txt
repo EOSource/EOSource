@@ -1,0 +1,37 @@
+rule InputNpc(id) goto State
+rule TalkedToNpc(id) goto State
+rule Always() goto State
+rule EnterMap(id) goto State
+rule EnterCoord(m,x,y) goto State
+rule LeaveMap(id) goto State
+rule LeaveCoord(m,x,y) goto State
+rule IsLeader() goto State
+rule InParty() goto State
+rule Class(id) goto State
+rule LostClass(id) goto State
+rule KilledNpcs(id, amount) goto State
+rule KilledPlayers(id) goto State
+rule ArenaKills(id) goto State
+rule ArenaWins(id) goto State
+rule GotItems(id, amount) goto State
+rule LostItems(id, amount) goto State
+rule UsedItem(id, amount) goto State
+rule IsGender(id) goto State
+rule IsLevel(id) goto State
+rule IsRebirth(id) goto State
+rule IsParty(id) goto State
+rule IsRace(id) goto State
+rule IsWearing(id) goto State
+rule IsQuestState(quest, state) goto State
+rule GotSpell(id, SpellLevel) goto State
+rule LostSpell(id) goto State
+rule UsedSpell(id, amount) goto State
+rule CitizenOf("Argument") goto State
+rule StatBetween(StatName, minAmount, maxAmount) goto State
+rule StatGreater(StatName, amount) goto State
+rule StatIs(StatName, amount) goto State
+rule StatLess(StatName, amount) goto State
+rule StatNot(StatName, amount) goto State
+rule StatRpn(amount) goto State
+
+Note: "Argument" is a string!, id is an integer. Integers don't need "" quotes

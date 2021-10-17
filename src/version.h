@@ -1,0 +1,8 @@
+#ifndef VERSION_H_INCLUDED
+#define VERSION_H_INCLUDED
+
+#ifndef EOSERV_VERSION_STRING
+#define EOSERV_VERSION_STRING "0.6.1"
+#endif
+
+#endif

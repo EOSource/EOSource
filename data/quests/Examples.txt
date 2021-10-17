@@ -1,0 +1,65 @@
+Example quest:
+
+main
+{
+   questname  "Sheep Hunt"
+   version      1.0
+}
+state begin
+{
+   desc         "Talk to the Hunter"
+   
+   action       AddNpcText(1, "Good morning, [name]! How have you been?");
+   action       AddNpcText(1, "Could you help me, getting rid of these sheeps?");
+   
+   action       AddNpcInput(1, 1, "Yes of course!");
+   action       AddNpcInput(1, 2, "No thank you.");
+   
+   rule         InputNpc( 1 ) goto Hunt
+   rule         InputNpc( 2 ) goto Reset
+}
+state Hunt
+{
+   desc         "Kill Sheeps"
+   
+   action       AddNpcText(1, "Thank you so much, [name]! I appreciate it.");
+   action       AddNpcText(1, "Please kill 20 sheeps and return to me once you're done.");
+   
+   rule         KilledNpcs(170,20) goto Return
+}
+state Return
+{
+   desc         "Talk to the Hunter"
+   action       AddNpcText(1, "Thank you so much for helping me out, that was pretty quick, I surely underestimated you.");
+   action       AddNpcText(1, "I would like to give you this as gratitude for your help, please accept it!");
+
+   rule         TalkedToNpc(1) goto Reward
+}
+state Reward
+{
+	action  ShowHint("You have been rewarded!");
+
+    	if Class(1) GiveItem(4,10);
+	elseif Class(2) GiveItem(5,10);
+	else GiveItem(1,5000);
+
+    	action  End();
+}
+state  Reset
+{
+        action   AddNpcText(1, "That's unfortunate!");
+        action   Reset();
+}
+
+------------------------------------------------------------------
+
+Explanation:
+
+When the player talks to the Sheep Hunter (quest ID 1 required) then
+the hunter will ask the player to kill 20 sheeps, if he accepts it
+he'll get to the next state and will have to kill 20 sheeps to get rewarded.
+
+By using: "If", "Elseif" and "Else" you can decide the action by checking a rule.
+Then the last thing that'll be called is action End() to make sure the quest won't be repeatable.
+
+Quests should be saved as 00001.eqf etc.

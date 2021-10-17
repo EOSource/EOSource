@@ -1,0 +1,47 @@
+Example command 1: Player Prefix
+
+Main
+{
+	commandname = "reborn"
+	type = "player"
+
+	check Level(200);
+
+	call GiveRebirth(1);
+	call SetLevel(0);
+	call SetExp(0);
+
+	call quake(8, map);
+	call KickPlayer();
+}
+
+Explanation:
+
+When the player types #reborn the person will get 1 extra rebirth level.
+Once the played obtained the rebirth level his level and exp will be set to 0.
+The player however, has to be level 200 or he'll get a server message.
+
+Victim can also be used, but in this case it's not necessary and can be left alone.
+
+-----------------------------------------------------------------------------------
+
+Example command 2: Admin Prefix
+
+Main
+{
+	commandname = "reward"
+	type = "admin"
+
+	check Admin(3);
+
+	call GiveItem(arguments[1], arguments[2], victim);
+	call ServerMessage("You have been rewarded with an item!", victim);
+}
+
+Explanation:
+
+Argument[1] is the item id given by entering the first argument: $reward hollow 1
+Argument[2] is the amount id given by entering the second argument: $reward hollow 1 500
+
+This command will give the victim 500 of item id 1 (gold).
+Commands should be saved as 00001.ecf etc.

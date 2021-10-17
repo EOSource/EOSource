@@ -1,0 +1,32 @@
+call ShowHint("argument", victim);
+call ServerMessage("argument", victim);
+call GiveItem(id, amount, victim);
+call RemoveItem(id, amount, victim);
+call GiveEXP(id, victim);
+call GiveRebirth(id, victim);
+call GiveSpell(id, victim);
+call SetClass(id, victim);
+call PlaySound(id, victim);
+call Warp(Map, X, Y, victim);
+call SetGender(id, victim);
+call setHairStyle(id, victim);
+call SetHairColor(id, victim);
+call Reset(victim);
+call SetAdmin(id, victim);
+call SetPartner("argument", victim);
+call SetHome("argument", victim);
+call SetTitle("argument", victim);
+call SetRace(id, victim);
+call SetName("argument", victim);
+call QuestBox("title", "text", victim);
+call InfoBox("title", "text", victim);
+call Quake(id, "map/world");
+call SetLevel(id, victim);
+call SetEXP(id, victim);
+call KickPlayer(victim);
+call OpenLocker(victim);
+call WorldServerMessage("argument");
+call SetPetLevel(id);
+
+Note: "Argument" is a string!, id is an integer. Integers don't need "" quotes
+Note: victim is optional! This allows you to use commands on other players than yourself

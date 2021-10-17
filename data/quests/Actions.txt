@@ -1,0 +1,38 @@
+action SetState("Argument");
+action partyWarp(m,x,y);
+action Reset();
+action End();
+action GivePartyItem(id, amount);
+action GivePartyEXP(id);
+action StartQuest(id, "State");
+action ResetQuest(id);
+action SetQuestState(id, "State");
+action AddNpcText(id, "Argument");
+action AddNpcChat(id, "Argument");
+action addNpcInput(Questid, InputId, "Argument");
+action AddNpcPM(id, "Argument");
+action ShowHint("Argument");
+action Quake(id);
+action QuakeWorld(id);
+action SetCoord(m,x,y);
+action ReturnHome();
+action PlaySound(id);
+action PlayEffect(id);
+action NewAchievement("Argument");
+action GiveEXP(id);
+action GiveItem(id, amount);
+action RemoveItem(id, amount);
+action SetClass(id);
+action SetRace(id);
+action RemoveKarma(id);
+action GiveKarma(id);
+action SpawnNPC(id, amount);
+action SetTitle("Argument");
+action SetFiance("Argument");
+action SetPartner("Argument");
+action SetHome("Argument");
+action SetStat("Stat", id);
+action GiveStat("Stat", id);
+action RemoveStat("Stat", id);
+
+Note: "Argument" is a string!, id is an integer. Integers don't need "" quotes
