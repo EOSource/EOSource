@@ -1,0 +1,13 @@
+# Whitelist File
+#
+# If you have whitelist mode enabled, only people with a specified ip
+# acount, or character on that account can log on.
+#
+# Examples:
+#
+# account: <account name>      "allows this account to log in."
+# character: <character name>  "allows this character to log in."
+# ip: <ip address>             "allows this IP to log in."
+# admin: <admin level>         "allows this admin character to log in."
+#
+#

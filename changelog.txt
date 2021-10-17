@@ -1,0 +1,48 @@
+Note: A lot of command scripting messages have been modified/improved and some have been removed in this version.
+
+EOSource 7.0 changes:
+
+Changes to command scripting:
+
+Added:
+
+Added command scripting check: member(level)
+Added command scripting action: playeffect(id)
+Added command scripting action: removespell(id)
+Added command scripting action: setkarma(karma)
+Added command scripting action: givestats(stat, amount), e.g: action givestats("str", 20);
+
+Modified that "check partner" no longer takes a partner name as argument but checks whether you are married or not.
+
+Add "character" or "world" as last argument of the servermsg action to specify if a server message should be visible for everyone or just 1 player.
+Add "character" or "pet" as last argument of openlocker to specifiy if a character's locker should be opened or from his pet, if available.
+Add "true" or "false" as last argument of a command check to enable error messages, if not specified then error messages will be shown.
+
+The following command checks DON'T take true/false as argument because it doesn't contain error messages:
+
+- location
+- map
+- admin
+
+Removed:
+
+Removed action setexp
+Removed action setlevel
+Removed action setpetlevel
+Removed action worldservermessage
+
+Renamed:
+
+showhint has been renamed to statusmsg
+servermessage has been renamed to servermsg
+questbox has been renamed to questdialog
+infobox has been renamed to infodialog
+kickplayer has been renamed to kick
+
+Fixed:
+
+check level(level) is now ignored if a player has rebirth level 1 or higher.
+action setadmin can no longer be used on players with a higher admin level than you.
+The partner warp spell can no longer be used to warp to partners on the devilgate, CTF or event room map.
+Party leaders can no longer warp their party to the devilgate, CTF or event room map.
+Party leaders can no longer warp party members located on the devilgate, CTF or event room map.

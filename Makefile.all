@@ -1,0 +1,181 @@
+
+SRCDIR = src
+
+DEBUG_BIN = eosource-debug
+RELEASE_BIN = eosource
+RELEASEGUI_BIN = eosource-gui
+
+DEBUG_OBJDIR = obj/Debug/$(SRCDIR)
+RELEASE_OBJDIR = obj/Release/$(SRCDIR)
+RELEASEGUI_OBJDIR = obj/ReleaseGUI/$(SRCDIR)
+
+DEBUG_FORMAT = -g
+OPTIMIZATION_LEVEL = -O2
+
+CFLAGS = -fwrapv -fno-strict-aliasing -Wall -Wextra -std=gnu++0x -DEOSERV_MAKEFILE -DCONSOLE
+CXXFLAGS = -fwrapv -fno-strict-aliasing -Wall -Wextra -std=gnu++0x -DEOSERV_MAKEFILE -DCONSOLE
+LDFLAGS = 
+LIBS = $(PTHREAD_LIB)
+
+ifeq ($(DEBUG),1)
+	BIN = $(DEBUG_BIN)
+	OBJDIR = $(DEBUG_OBJDIR)
+	CFLAGS += $(DEBUG_FORMAT) -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -DDEBUG -DDATABASE_DEBUG
+	CXXFLAGS += $(DEBUG_FORMAT) -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -DDEBUG -DDATABASE_DEBUG
+else
+	BIN = $(RELEASE_BIN)
+	OBJDIR = $(RELEASE_OBJDIR)
+	CFLAGS += $(OPTIMIZATION_LEVEL)
+	CXXFLAGS += $(OPTIMIZATION_LEVEL)
+	LDFLAGS += -s
+endif
+
+ifeq ($(GUI),1)
+	BIN = $(RELEASEGUI_BIN)
+	OBJDIR = $(RELEASEGUI_OBJDIR)
+	CFLAGS += $(OPTIMIZATION_LEVEL) -DGUI `pkg-config --cflags --libs allegro-5.0 allegro_acodec-5.0 allegro_audio-5.0 allegro_color-5.0 allegro_font-5.0 allegro_image-5.0 allegro_main-5.0 allegro_memfile-5.0 allegro_primitives-5.0 allegro_ttf-5.0`
+	CXXFLAGS += $(OPTIMIZATION_LEVEL) -DGUI `pkg-config --cflags --libs allegro-5.0 allegro_acodec-5.0 allegro_audio-5.0 allegro_color-5.0 allegro_font-5.0 allegro_image-5.0 allegro_main-5.0 allegro_memfile-5.0 allegro_primitives-5.0 allegro_ttf-5.0`
+	LDFLAGS += -s `pkg-config --cflags --libs allegro-5.0 allegro_acodec-5.0 allegro_audio-5.0 allegro_color-5.0 allegro_font-5.0 allegro_image-5.0 allegro_main-5.0 allegro_memfile-5.0 allegro_primitives-5.0 allegro_ttf-5.0``pkg-config --cflags --libs allegro-5.0 allegro_acodec-5.0 allegro_audio-5.0 allegro_color-5.0 allegro_font-5.0 allegro_image-5.0 allegro_main-5.0 allegro_memfile-5.0 allegro_primitives-5.0 allegro_ttf-5.0``pkg-config --cflags --libs allegro-5.0 allegro_acodec-5.0 allegro_audio-5.0 allegro_color-5.0 allegro_font-5.0 allegro_image-5.0 allegro_main-5.0 allegro_memfile-5.0 allegro_primitives-5.0 allegro_ttf-5.0``pkg-config --cflags --libs allegro-5.0 allegro_acodec-5.0 allegro_audio-5.0 allegro_color-5.0 allegro_font-5.0 allegro_image-5.0 allegro_main-5.0 allegro_memfile-5.0 allegro_primitives-5.0 allegro_ttf-5.0`
+endif
+
+OBJ +=  $(OBJDIR)/arena.o \
+        $(OBJDIR)/character.o \
+        $(OBJDIR)/chat.o \
+        $(OBJDIR)/command_source.o \
+        $(OBJDIR)/commands.o \
+        $(OBJDIR)/config.o \
+        $(OBJDIR)/console.o \
+        $(OBJDIR)/database.o \
+        $(OBJDIR)/dialog.o \
+        $(OBJDIR)/eoclient.o \
+        $(OBJDIR)/eodata.o \
+        $(OBJDIR)/eoplus.o \
+        $(OBJDIR)/eoserver.o \
+        $(OBJDIR)/eoserv_config.o \
+        $(OBJDIR)/graphics.o \
+        $(OBJDIR)/guild.o \
+        $(OBJDIR)/hash.o \
+        $(OBJDIR)/i18n.o \
+        $(OBJDIR)/main.o \
+        $(OBJDIR)/map.o \
+        $(OBJDIR)/nanohttp.o \
+        $(OBJDIR)/npc.o \
+        $(OBJDIR)/packet.o \
+        $(OBJDIR)/party.o \
+        $(OBJDIR)/player.o \
+        $(OBJDIR)/quest.o \
+        $(OBJDIR)/sha256.o \
+        $(OBJDIR)/sln.o \
+        $(OBJDIR)/socket.o \
+        $(OBJDIR)/text.o \
+        $(OBJDIR)/timer.o \
+		$(OBJDIR)/util.o \
+        $(OBJDIR)/world.o \
+		$(OBJDIR)/eoplus/context.o \
+        $(OBJDIR)/eoplus/parse.o \
+        $(OBJDIR)/eoplus/lex.o \
+        $(OBJDIR)/extra/seose_compat.o \
+		$(OBJDIR)/commands/admins/admin.o \
+        $(OBJDIR)/commands/admins/commands.o \
+		$(OBJDIR)/commands/admins/char_mod.o \
+        $(OBJDIR)/commands/admins/debug.o \
+        $(OBJDIR)/commands/admins/info.o \
+        $(OBJDIR)/commands/admins/map.o \
+        $(OBJDIR)/commands/admins/moderation.o \
+        $(OBJDIR)/commands/admins/server.o \
+        $(OBJDIR)/commands/admins/warp.o \
+        $(OBJDIR)/commands/players/debug.o \
+        $(OBJDIR)/commands/players/info.o \
+        $(OBJDIR)/commands/players/novelty.o \
+        $(OBJDIR)/commands/players/pets.o \
+        $(OBJDIR)/commands/players/commands.o \
+        $(OBJDIR)/commands/players/profession.o \
+        $(OBJDIR)/handlers/handlers.o \
+        $(OBJDIR)/handlers/Account.o \
+        $(OBJDIR)/handlers/AdminInteract.o \
+        $(OBJDIR)/handlers/Attack.o \
+        $(OBJDIR)/handlers/Bank.o \
+        $(OBJDIR)/handlers/Barber.o \
+        $(OBJDIR)/handlers/Board.o \
+        $(OBJDIR)/handlers/Book.o \
+        $(OBJDIR)/handlers/Chair.o \
+        $(OBJDIR)/handlers/Character.o \
+        $(OBJDIR)/handlers/Chest.o \
+        $(OBJDIR)/handlers/Citizen.o \
+        $(OBJDIR)/handlers/Commands.o \
+        $(OBJDIR)/handlers/Connection.o \
+        $(OBJDIR)/handlers/Door.o \
+        $(OBJDIR)/handlers/Emote.o \
+        $(OBJDIR)/handlers/Face.o \
+        $(OBJDIR)/handlers/Global.o \
+        $(OBJDIR)/handlers/Guild.o \
+        $(OBJDIR)/handlers/Init.o \
+        $(OBJDIR)/handlers/Internal.o \
+        $(OBJDIR)/handlers/Item.o \
+        $(OBJDIR)/handlers/Jukebox.o \
+        $(OBJDIR)/handlers/Law.o \
+        $(OBJDIR)/handlers/Locker.o \
+        $(OBJDIR)/handlers/Login.o \
+        $(OBJDIR)/handlers/Message.o \
+        $(OBJDIR)/handlers/Paperdoll.o \
+        $(OBJDIR)/handlers/Party.o \
+        $(OBJDIR)/handlers/Players.o \
+        $(OBJDIR)/handlers/Priest.o \
+        $(OBJDIR)/handlers/Quest.o \
+        $(OBJDIR)/handlers/Refresh.o \
+        $(OBJDIR)/handlers/Shop.o \
+        $(OBJDIR)/handlers/Sit.o \
+        $(OBJDIR)/handlers/Spell.o \
+        $(OBJDIR)/handlers/StatSkill.o \
+        $(OBJDIR)/handlers/Talk.o \
+        $(OBJDIR)/handlers/Trade.o \
+        $(OBJDIR)/handlers/Walk.o \
+        $(OBJDIR)/handlers/Warp.o \
+        $(OBJDIR)/handlers/Welcome.o \
+		$(OBJDIR)/util/rpn.o \
+		$(OBJDIR)/util/variant.o
+
+ifeq ($(MYSQL),1)
+	LIBS += $(MYSQL_LIB)
+	CFLAGS += -DDATABASE_MYSQL
+	CXXFLAGS += -DDATABASE_MYSQL
+endif
+
+ifeq ($(SQLITE),1)
+	LIBS += $(SQLITE_LIB)
+	CFLAGS += -DDATABASE_SQLITE
+	CXXFLAGS += -DDATABASE_SQLITE
+endif
+
+include $(MAKEFILE_INC)
+
+ifeq ($(POLL),1)
+	CFLAGS += -DSOCKET_POLL
+	CXXFLAGS += -DSOCKET_POLL
+endif
+
+.PHONY: all clean create-build-dirs
+
+all: eoserv
+
+clean:
+	${RM} $(OBJ) $(DEBUG_BIN) $(RELEASE_BIN) $(RELEASEGUI_BIN)
+
+create-build-dirs:
+	-@mkdir $(OBJDIR)
+	-@mkdir $(OBJDIR)/commands
+	-@mkdir $(OBJDIR)/commands/admins
+	-@mkdir $(OBJDIR)/commands/players
+	-@mkdir $(OBJDIR)/eoplus
+	-@mkdir $(OBJDIR)/fwd
+	-@mkdir $(OBJDIR)/handlers
+	-@mkdir $(OBJDIR)/util
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	$(CC) -c $< -o $@ $(CFLAGS)
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+	$(CXX) -c $< -o $@ $(CXXFLAGS)
+
+eoserv: create-build-dirs $(OBJ)
+	$(CXX) $(OBJ) -o $(BIN) $(LIBS) $(LDFLAGS)

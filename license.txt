@@ -1,0 +1,26 @@
+Copyright 2008-2014 the EOSERV development team (http://eoserv.net/devs)
+
+
+
+This is a legal agreement between you (either an individual or an entity),
+the end user, and EOSource regarding use of this software. By installing,
+copying, or otherwise using the Software.
+
+You agree to be bound by the terms of this Agreement. If you do not agree
+to the terms of this Agreement, do not install or use this Software.
+
+This license agreement applies to EOSource that may be downloaded from
+http://eosource.net or any other authorised site. This software is provided
+to you free of charge.
+
+Also no parts of The Software or other files provided in this package may be
+reproduced in part or in whole. You may not reverse engineer, decompile, or
+disassemble this software product.
+
+EOSource expressly disclaims any warranty for this software. The software is
+provided "AS IS". You agree that by accepting this license, you are expressly
+acknowledging that the use of this software is at your own risk.
+
+Any harm or damage to your system by running this software will also be at your
+own risk. We do not ensure continuous, uninterrupted, reliable, error-free, or
+secure operation of the software.

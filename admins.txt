@@ -1,0 +1,10 @@
+# Admins File
+#
+# Character names in this file will automaticly be promoted to High Game Masters.
+#
+# Example:
+#
+# hollow
+# clive
+# elevations
+#

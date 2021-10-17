@@ -1,0 +1,11 @@
+1. Copy files to Ubuntu (32-Bit)
+2. Open the EOSource directory
+3. Shift + right click -> Open terminal
+
+Execute commands:
+
+./configure linux
+make clean
+make eoserv MYSQL=1 SQLITE=1
+
+Optional: Fix errors during compilation.
