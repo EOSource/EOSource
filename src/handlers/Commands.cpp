@@ -77,20 +77,6 @@ namespace Handlers
             command = arguments.front().substr(1);
             arguments.erase(arguments.begin());
 
-            if (command == "autopot")
-            {
-                  if (arguments[0] == "off")
-                {
-                    character->autopot = 1;
-                    character->ServerMsg("Your autopots has been turned off!");
-                }
-                else if (arguments[0] == "on")
-                {
-                    character->autopot = 0;
-                    character->ServerMsg("Your autopots has been turned on!");
-                }
-            }
-
             UTIL_FOREACH(character->world->commands, commands)
             {
                 if ((commands->type.compare(0,6, "player") == 0 && message.find_first_of(std::string(character->world->config["PlayerPrefix"])) == 0) || (commands->type.compare(0,5, "admin") == 0 && message.find_first_of(std::string(character->world->config["AdminPrefix"])) == 0 && character->SourceAccess() > ADMIN_PLAYER))

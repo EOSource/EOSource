@@ -426,13 +426,12 @@ display_cha(this->world->config["UseAdjustedStats"] ? adj_cha : cha)
 
 	Database_Result res = this->world->db.Query("SELECT `name`, `title`, `guild_rankname`, `home`, `fiance`, `partner`, `admin`, `class`, `rebirth`, `immune`, `bounty`, `member`, `gender`, `race`, `oldhairstyle`, `hairstyle`, `haircolor`,"
 	"`map`, `x`, `y`, `oldmap`, `oldx`, `oldy`, `direction`, `level`, `exp`, `flevel`, `fexp`, `mlevel`, `mexp`, `wlevel`, `wexp`, `clevel`, `cexp`, `lockerpin`, `hp`, `tp`, `str`, `int`, `wis`, `agi`, `con`, `cha`, `statpoints`, `skillpoints`, "
-	"`karma`, `sitting`, `bankmax`, `goldbank`, `usage`, `warn`, `inventory`, `bank`, `paperdoll`, `spells`, `guild`, `guild_rank`, `quest`, `achievements`, `vars`, `nointeract`, `autopot` FROM `characters` "
+	"`karma`, `sitting`, `bankmax`, `goldbank`, `usage`, `warn`, `inventory`, `bank`, `paperdoll`, `spells`, `guild`, `guild_rank`, `quest`, `achievements`, `vars`, `nointeract` FROM `characters` "
 	"WHERE `name` = '$'", name.c_str());
 
 	std::unordered_map<std::string, util::variant> row = res.front();
 
 	this->login_time = std::time(0);
-	this->autopot = static_cast<AdminLevel>(GetRow<int>(row, "autopot"));
 
 	this->online = false;
 	this->nowhere = false;
@@ -3019,14 +3018,14 @@ void Character::Save()
     "`oldhairstyle` = #, `hairstyle` = #, `haircolor` = #, `map` = #, `x` = #, `y` = #, `oldmap` = #, `oldx` = #, `oldy` = #, `direction` = #, `level` = #, `exp` = #, `flevel` = #, `fexp` = #, `mlevel` = #, `mexp` = #, "
     "`wlevel` = #, `wexp` = #, `clevel` = #, `cexp` = #, `lockerpin` = #, `hp` = #, `tp` = #, `str` = #, `int` = #, `wis` = #, `agi` = #, `con` = #, `cha` = #, `statpoints` = #, `skillpoints` = #, `karma` = #, `sitting` = #, "
     "`nointeract` = #, `bankmax` = #, `goldbank` = #, `usage` = #, `warn` = #, `inventory` = '$', `bank` = '$', `paperdoll` = '$', "
-    "`spells` = '$', `guild` = '$', guild_rank = #, `quest` = '$', `achievements` = '$', `vars` = '$', `autopot` = # WHERE `name` = '$'",
+    "`spells` = '$', `guild` = '$', guild_rank = #, `quest` = '$', `achievements` = '$', `vars` = '$' WHERE `name` = '$'",
 
     this->title.c_str(), this->guild_rankname.c_str(), this->home.c_str(), this->fiance.c_str(), this->partner.c_str(), int(this->admin), this->clas, this->rebirth, this->immune, this->bounty, this->member, int(this->gender), int(this->race),
     this->oldhairstyle, this->hairstyle, this->haircolor, this->mapid, this->x, this->y, this->oldmap, this->oldx, this->oldy, int(this->direction), this->level, this->exp, this->flevel, this->fexp, this->mlevel, this->mexp,
     this->wlevel, this->wexp, this->clevel, this->cexp, this->lockerpin, this->hp, this->tp, this->str, this->intl, this->wis, this->agi, this->con, this->cha, this->statpoints, this->skillpoints, this->karma, int(this->sitting),
     nointeract, this->bankmax, this->goldbank, this->Usage(), this->warn, ItemSerialize(this->inventory).c_str(), ItemSerialize(this->bank).c_str(),
     DollSerialize(this->paperdoll).c_str(), SpellSerialize(this->spells).c_str(), (this->guild ? this->guild->tag.c_str() : ""),
-    this->guild_rank, quest_data.c_str(), AchievementsSerialize(this->achievements).c_str(), "", this->autopot, this->real_name.c_str());
+    this->guild_rank, quest_data.c_str(), AchievementsSerialize(this->achievements).c_str(), "", this->real_name.c_str());
 }
 
 AdminLevel Character::SourceAccess() const

@@ -30,16 +30,6 @@ ActionQueue::~ActionQueue()
 	}
 }
 
-void EOClient::AccountReplyNewSequence()
-{
-	this->seq_start = util::rand(0, 240);
-}
-
-int EOClient::GetSeqStart()
-{
-	return this->seq_start;
-}
-
 void EOClient::Initialize()
 {
 	this->upload_fh = 0;

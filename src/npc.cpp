@@ -2390,11 +2390,6 @@ void NPC::Attack(Character *target)
     if (target->immune == false)
         target->hp -= limitamount;
 
-    if (target->hp <= 0)
-    {
-        this->map->world->HarryPotter();
-    }
-
     if (target->party)
         target->party->UpdateHP(target);
 

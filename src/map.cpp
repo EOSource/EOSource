@@ -51,11 +51,6 @@ void map_timed_spikes(void *map_void)
             if (character->immune == false)
                 character->hp -= limitamount;
 
-            if (character->hp <= 0)
-            {
-                map->world->HarryPotter();
-            }
-
             PacketBuilder builder(PACKET_EFFECT, PACKET_SPEC, 7);
             builder.AddChar(2);
             builder.AddShort(character->immune == false ? amount : 0);
@@ -869,11 +864,6 @@ void Map::DrainHP(Character *from)
 
     if (from->immune == false)
         from->hp -= limitamount;
-
-        if (from->hp <= 0)
-    {
-        this->world->HarryPotter();
-    }
 
     from->hp = std::min(from->hp, from->maxhp);
 
