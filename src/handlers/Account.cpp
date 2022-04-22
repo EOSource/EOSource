@@ -42,8 +42,11 @@ namespace Handlers
         }
         else
         {
-            reply.AddShort(ACCOUNT_CONTINUE);
-            reply.AddString("OK");
+            if (client->GetSeqStart() > 240)
+			client->AccountReplyNewSequence();
+
+ 		reply.AddShort(ACCOUNT_CONTINUE);
+		reply.AddChar(client->GetSeqStart());
         }
 
         client->Send(reply);

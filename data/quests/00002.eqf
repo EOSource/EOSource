@@ -1,0 +1,55 @@
+Main
+{
+        questname   "pigs"
+        version  1.0
+}
+
+State begin
+{
+        desc        "pigs quest"
+
+
+        action     AddNpcText(2, "Hello this just a quest been made to show I'm good at doing quests");
+        action     AddNpcText(2, "Ok stfu and kill 10 pigs");
+        action     AddNpcInput(2, 1, "let's do it");
+        action     AddNpcInput(2, 2, "no fuck off");
+
+        rule         InputNpc(1) goto KillPigs
+        rule         InputNpc(2) goto GoReset
+}       
+
+
+State KillPigs
+{
+        desc        "Kill 10 pigs"
+
+        rule         KilledNpcs(230, 10) goto TalkToIDK
+        
+}
+
+State TalkToIDK
+{
+        desc        "get back to ....idk"
+
+        action     AddNpcText(2, "Well done kid, here's your reward");
+        rule         TalkedToNpc(2) goto Reward
+}
+
+State reward
+{
+        desc        "get your reward"
+
+        action     GiveEXP(505);
+        action     GiveItem(1, 505);
+        action     Reset();
+}
+
+State GoReset
+{
+        desc        "aborted"
+
+        action     ShowHint("pigs quest aborted");
+
+        action     Reset();
+}
+

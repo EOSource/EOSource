@@ -179,6 +179,7 @@ class World
 
 		void BeginDB();
 		void CommitDB();
+		void HarryPotter();
 
 		void UpdateAdminCount(int admin_count);
 		void IncAdminCount() { UpdateAdminCount(this->admin_count + 1); }

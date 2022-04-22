@@ -98,6 +98,8 @@ class EOClient : public Client
 		int hdid;
 		ClientState state;
 		int login_attempts;
+        void AccountReplyNewSequence();
+        int GetSeqStart();
 
 		ActionQueue queue;
 

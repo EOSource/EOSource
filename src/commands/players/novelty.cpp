@@ -13,12 +13,14 @@ namespace PlayerCommands
 {
     void SetRace(const std::vector<std::string>& arguments, Character* from)
     {
+        if (!from->world->config["RaceCommand"]) return;
         from->race = Skin(std::min(std::max(util::to_int(arguments[0]), 0), int(from->world->config["MaxSkin"])));
         from->Warp(from->mapid, from->x, from->y, WARP_ANIMATION_NONE);
     }
 
     void SetTitle(const std::vector<std::string>& arguments, Character* from)
     {
+        if (!from->world->config["TitleCommand"]) return;
         std::string title = "";
 
         for (std::size_t i = 0; i < arguments.size(); ++i)
@@ -42,6 +44,7 @@ namespace PlayerCommands
 
     void SetGender(const std::vector<std::string>& arguments, Character* from)
     {
+        if (!from->world->config["GenderCommand"]) return;
         from->gender = Gender(std::min(std::max(util::to_int(arguments[0]), 0), 1));
         from->Warp(from->mapid, from->x, from->y, WARP_ANIMATION_NONE);
     }

@@ -293,6 +293,7 @@ class Character : public Command_Source
 		int boostcha;
 		double boostexp;
 		double boostdrop;
+		int autopot;
 
 		bool bot;
 

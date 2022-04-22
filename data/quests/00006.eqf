@@ -1,0 +1,69 @@
+Main
+{
+        questname   "Traveling To Mainland"
+        version  1.0
+}
+
+State Begin
+{
+        desc        " "
+
+        action     AddNpcText(6, "Hello there would you like to travel to mainland to start the real adventure?");
+        action     AddNpcInput(6, 1, "Yes id love to");
+        action     AddNpcInput(6, 2, "No ill have to pass I have more things to do.");
+        rule         InputNpc(1) goto Continue
+        rule         InputNpc(2) goto BeforeReset
+}
+
+State Continue
+{
+        desc        " "
+
+        action     AddNpcText(6, "To travel to mainland you must be level 10, would you like to continue?");
+        action     AddNpcInput(6, 1, "Yes, I would like to continue");
+        action     AddNpcInput(6, 2, "No im not level 10.");
+        rule         InputNpc(1) goto CheckLevel
+        rule         InputNpc(2) goto BeforeReset
+}
+
+State CheckLevel
+{
+        desc        " Checking level"
+
+        if         IsLevel(10) goto Next
+        Else     goto BeforeReset
+}
+
+State Next
+{
+        desc        " "
+
+        action     AddNpcText(6, "Okay I see your level 10 you may travel to mainland.");
+        action     AddNpcInput(6, 1, "Okay.");
+        rule         InputNpc(1) goto Travel
+}
+
+State Travel
+{
+        desc        " "
+
+        action     AddNpcText(6, "See you on the other side");
+        action     SetCoord(32,21,34);
+        action     Reset();
+}
+
+State BeforeReset
+{
+        desc        " "
+
+        action     AddNpcText(6, "Come back when your ready");
+        action     AddNpcInput(6, 6, "Okay");
+        rule         InputNpc(6) goto Reset
+}
+
+State Reset
+{
+        desc        " "
+
+        action     Reset();
+}

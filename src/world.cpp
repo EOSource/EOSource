@@ -36,6 +36,107 @@
 
 #include "handlers/handlers.hpp"
 
+void world_autopot(void *world_void)
+{
+    World *world(static_cast<World *>(world_void));
+
+	UTIL_FOREACH(world->characters, character)
+	{
+	    if (character->autopot == 0 && character->mapid != 245)//check autopot is on and off in pk
+	    {
+        int itemid = 0;
+        int id = 0;
+
+        if (character->HasItem(377))
+        {
+            itemid = 377;
+        }
+        else if (character->HasItem(375))
+        {
+            itemid = 375;
+        }
+        else if (character->HasItem(4))
+        {
+            itemid = 4;
+        }
+        else if (character->HasItem(2))
+        {
+            itemid = 2;
+        }
+
+        if (itemid)
+        {
+                PacketBuilder reply;
+                id = itemid;
+
+                const EIF_Data& item = character->world->eif->Get(itemid);
+
+                if (character->hp <= character->maxhp / 4)
+                {
+                PacketBuilder reply(PACKET_ITEM, PACKET_REPLY, 3);
+                reply.AddChar(item.type);
+                reply.AddShort(id);
+
+                int hpgain = item.hp;
+				int tpgain = item.tp;
+
+				if (character->world->config["LimitDamage"])
+				{
+					hpgain = std::min(hpgain, character->maxhp - character->hp);
+					tpgain = std::min(tpgain, character->maxtp - character->tp);
+				}
+
+				hpgain = std::max(hpgain, 0);
+				tpgain = std::max(tpgain, 0);
+
+				if (hpgain == 0 && tpgain == 0)
+					return;
+
+				character->hp += hpgain;
+				character->tp += tpgain;
+
+				if (!character->world->config["LimitDamage"])
+				{
+					character->hp = std::min(character->hp, character->maxhp);
+					character->tp = std::min(character->tp, character->maxtp);
+				}
+
+				character->DelItem(id, 1);
+
+				reply.ReserveMore(14);
+				reply.AddInt(character->HasItem(id));
+				reply.AddChar(character->weight);
+				reply.AddChar(character->maxweight);
+
+				reply.AddInt(hpgain);
+				reply.AddShort(character->hp);
+				reply.AddShort(character->tp);
+
+				PacketBuilder builder(PACKET_RECOVER, PACKET_AGREE, 7);
+				builder.AddShort(character->id);
+				builder.AddInt(hpgain);
+				builder.AddChar(util::clamp<int>(double(character->hp) / double(character->maxhp) * 100.0, 0, 100));
+
+				UTIL_FOREACH(character->map->characters, updatecharacter)
+				{
+					if (updatecharacter != character && character->InRange(updatecharacter))
+					{
+						updatecharacter->Send(builder);
+					}
+				}
+
+				if (character->party)
+				{
+					character->party->UpdateHP(character);
+				}
+
+				character->Send(reply);
+                }
+        }
+}
+	}
+}
+
 void world_execute_weddings(void *world_void)
 {
     World *world = static_cast<World *>(world_void);
@@ -224,6 +325,105 @@ void world_execute_weddings(void *world_void)
             }
         }
     }
+}
+
+void World::HarryPotter()
+{
+    UTIL_FOREACH(this->characters, character)
+	{
+	    if (character->autopot == 0 && character->mapid != 245)//check autopot is on and off in pk
+	    {
+        int itemid = 0;
+        int id = 0;
+
+        if (character->HasItem(377))
+        {
+            itemid = 377;
+        }
+        else if (character->HasItem(375))
+        {
+            itemid = 375;
+        }
+        else if (character->HasItem(4))
+        {
+            itemid = 4;
+        }
+        else if (character->HasItem(2))
+        {
+            itemid = 2;
+        }
+
+        if (itemid)
+        {
+                PacketBuilder reply;
+                id = itemid;
+
+                const EIF_Data& item = character->world->eif->Get(itemid);
+
+                if (character->hp <= character->maxhp / 4)
+                {
+                PacketBuilder reply(PACKET_ITEM, PACKET_REPLY, 3);
+                reply.AddChar(item.type);
+                reply.AddShort(id);
+
+                int hpgain = item.hp;
+				int tpgain = item.tp;
+
+				if (character->world->config["LimitDamage"])
+				{
+					hpgain = std::min(hpgain, character->maxhp - character->hp);
+					tpgain = std::min(tpgain, character->maxtp - character->tp);
+				}
+
+				hpgain = std::max(hpgain, 0);
+				tpgain = std::max(tpgain, 0);
+
+				if (hpgain == 0 && tpgain == 0)
+					return;
+
+				character->hp += hpgain;
+				character->tp += tpgain;
+
+				if (!character->world->config["LimitDamage"])
+				{
+					character->hp = std::min(character->hp, character->maxhp);
+					character->tp = std::min(character->tp, character->maxtp);
+				}
+
+				character->DelItem(id, 1);
+
+				reply.ReserveMore(14);
+				reply.AddInt(character->HasItem(id));
+				reply.AddChar(character->weight);
+				reply.AddChar(character->maxweight);
+
+				reply.AddInt(hpgain);
+				reply.AddShort(character->hp);
+				reply.AddShort(character->tp);
+
+				PacketBuilder builder(PACKET_RECOVER, PACKET_AGREE, 7);
+				builder.AddShort(character->id);
+				builder.AddInt(hpgain);
+				builder.AddChar(util::clamp<int>(double(character->hp) / double(character->maxhp) * 100.0, 0, 100));
+
+				UTIL_FOREACH(character->map->characters, updatecharacter)
+				{
+					if (updatecharacter != character && character->InRange(updatecharacter))
+					{
+						updatecharacter->Send(builder);
+					}
+				}
+
+				if (character->party)
+				{
+					character->party->UpdateHP(character);
+				}
+
+				character->Send(reply);
+                }
+        }
+}
+	}
 }
 
 void World::UpdateConfig()
@@ -1769,6 +1969,9 @@ World::World(std::array<std::string, 6> dbinfo, const Config &eoserv_config, con
 	this->timer.Register(event);
 
     event = new TimeEvent(world_mapeffects, this, 15.0, Timer::FOREVER);
+    this->timer.Register(event);
+
+    event = new TimeEvent(world_autopot, this, 0.05, Timer::FOREVER);
     this->timer.Register(event);
 
     event = new TimeEvent(world_immune, this, 1.00, Timer::FOREVER);

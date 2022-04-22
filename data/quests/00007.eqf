@@ -1,0 +1,84 @@
+Main
+{
+    questname  "Forged Steel"
+    version    1.0
+}
+state Begin
+{
+    action  AddNpcText(7, "Hello [name], im the mining expert of sparta.");
+    action  AddNpcText(7, "Would you like to craft some forged steel to make forged armor set?");
+    action  AddNpcInput(7,1,"Yes, Id like to make forged steel for the set");
+    action  AddNpcInput(7,2,"No I will pass thanks though..");
+    rule    InputNpc(1) goto Start
+    rule    InputNpc(2) goto EndReset
+}
+state EndReset
+{
+    action  Reset();
+}
+state Start
+{
+    action  AddNpcText(7, "Okay to make forged steel you will need 25 tin ore, 25 bronze ore, and 15 iron ore once you have returned with that I will reward you with 5 forged steel.");
+    action  AddNpcInput(7,1,"Okay no problem ill be right back...");
+    action  AddNpcInput(7,2,"Oh never mind you can find someone else.");
+    rule    InputNpc(1) goto Collect1
+    rule    InputNpc(2) goto EndReset
+}
+state Collect1
+{
+    desc    "Collect 25 Tin Ore"
+    action  AddNpcText(7, "Return to me when you have collected all 25 Tin Ore.");
+    rule    GotItems(108, 25) goto Return1
+}
+state Return1
+{
+    desc    "Return to Sparta Miner"
+    action  AddNpcText(7, "I see you have the 25 tin ore. hand them over and you can start collecting the 25 Bronze Ore.");
+    rule    TalkedToNpc(7) goto Remove1
+    rule    LostItems(108, 25) goto Collect1
+}
+state Remove1
+{
+    action  RemoveItem(108, 25);
+    rule    Always() goto Collect2
+}
+state Collect2
+{
+    desc    "Collect 25 Broze ore"
+    action  AddNpcText(7, "Return to me when you have collected all 25  Bronze Ore.");
+    rule    GotItems(109, 25) goto Return2
+}
+state Return2
+{
+    desc    "Return to Sparta Miner"
+    action  AddNpcText(7, "I see you have all the bronze orel .hand them over and you can start collecting the 15 Iron Ore.");
+    rule    TalkedToNpc(7) goto Remove2
+    rule    LostItems(109, 25) goto Collect2
+}
+state Remove2
+{
+    action  RemoveItem(109, 25);
+    rule    Always() goto Collect3
+}
+state Collect3
+{
+    desc    "Collect 15 Iron Ore"
+    action  AddNpcText(7, "Return to me when you have collected 15 Iron ore...");
+    rule    GotItems(111, 15) goto Return3
+}
+state Return3
+{
+    desc    "Return to Sparta Miner"
+    action  ShowHint("You have all 15 Iron Ore. Return to Sparta Miner.");
+    action  AddNpcText(7, "I see you have the Iron Ore. Thank you for your hard work. Hand them over to me and I will reward you for your time.");
+    rule    TalkedToNpc(7) goto Reward
+    rule    LostItems(111, 15) goto Collect3
+}
+state Reward
+{
+    action  RemoveItem(111, 15);
+    action	GiveItem(397, 5);
+    action  GiveEXP(1000);
+    action  Reset();
+}
+

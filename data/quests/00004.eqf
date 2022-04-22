@@ -1,0 +1,45 @@
+Main
+{
+questname "Lost Dog"
+version 1.0
+}
+state Begin
+{
+desc "Talk with stranger"
+       action AddNpcText(4, "Hello stranger i have lost my dog and can not find her will you please help me find my dog.");
+       action AddNpcInput(4,1,"Yes id love to help you find your dog.");
+       action AddNpcInput(4,2,"No i do not like dogs.");
+       rule InputNpc(1) goto Continue
+       rule InputNpc(2) goto BeforeReset
+}
+state BeforeReset
+{
+desc "Talk to old man"
+       action AddNpcText(4, "That is a shame");
+       rule TalkedToNpc(4) goto Reset
+}
+state Reset
+{
+       action Reset();
+}
+state Continue
+{
+desc "Find the lost dog"
+        action     AddNpcPM(4, "-Hint- You can find the lost dog somewhere in the forest behind the house...");
+       action AddNpcText(4, "Come back when you have found my dog.");
+       rule EnterCoord(9,4,5) goto Return
+}
+state Return
+{
+desc "Return to stranger"
+        action     AddNpcPM(4, "You found the lost dog return to its owner...");
+       action AddNpcText(4, "OH MY GOD!! You found her thank you so much. Here is your reward");
+       rule TalkedToNpc(4) goto Reward
+}
+state Reward
+{
+        action     GiveEXP(5000);
+        action     GiveItem(1, 1500);
+        action     End();
+}
+

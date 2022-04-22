@@ -1,0 +1,135 @@
+Main
+{
+        questname   "gold bar"
+        version  1.0
+}
+
+State Begin
+{
+        desc        "exchange gold with gold bars"
+
+        action     AddNpcText(3, "Hello there, I can take you gold and exchange it for gold bars");
+        action     AddNpcInput(3, 1, "exchange 1000 gold for 1 gold bar");
+        action     AddNpcInput(3, 2, "exchange 2000 gold for 2 gold bars");
+        action     AddNpcInput(3, 3, "exchange 5000 gold for 5 gold bars");
+        action     AddNpcInput(3, 4, "exchange 10000 gold for 10 gold bars");
+        
+        rule         InputNpc(1) goto confirm
+        rule         InputNpc(2) goto confirmTwo
+        rule         InputNpc(3) goto confirmThree
+        rule         InputNpc(4) goto confirmFour
+}
+
+State Exchange
+{
+        desc        "exchange 1000 gold for 1 gold bar"
+
+         action    RemoveItem(1, 1000) 
+         action     GiveItem(11, 1);
+
+}
+
+State ExchangeTwo
+{
+        desc        "exchange 2000 gold for 2 gold bars"
+
+        action     RemoveItem(1, 2000) 
+        action     GiveItem(11, 2);
+
+}
+
+State ExchangeThree
+{
+        desc        "exchange 5000 gold for 5 gold bars"
+
+       action     RemoveItem(1, 5000)        action     GiveItem(11, 5);
+}
+
+State ExchangeFour
+{
+        desc        "exchange 10000 gold for 10 gold bars"
+
+       action     RemoveItem(1, 10000) 
+       action     GiveItem(11, 10);
+}
+
+
+State GoReset
+{
+        desc        "reset"
+
+        action     Reset();
+}
+
+state confirm
+{
+    desc	"Confirm purchase"
+    action	AddNpcText(3, "Are you sure?");
+    action	AddNpcInput(3, 1, "Yes");
+    action	AddNpcInput(3, 2, "No");
+    rule	TalkedToNpc(1) goto check
+    rule	TalkedToNpc(2) goto GoReset
+}
+state confirmtwo
+{
+    desc	"Confirm purchase"
+    action	AddNpcText(3, "Are you sure?");
+    action	AddNpcInput(3, 1, "Yes");
+    action	AddNpcInput(3, 2, "No");
+    rule	TalkedToNpc(1) goto checktwo
+    rule	TalkedToNpc(2) goto GoReset
+}
+
+state confirmthree
+{
+    desc	"Confirm purchase"
+    action	AddNpcText(3, "Are you sure?");
+    action	AddNpcInput(3, 1, "Yes");
+    action	AddNpcInput(3, 2, "No");
+    rule	TalkedToNpc(1) goto checkthree
+    rule	TalkedToNpc(2) goto GoReset
+}
+state confirmfour
+{
+    desc	"Confirm purchase"
+    action	AddNpcText(3, "Are you sure?");
+
+    action	AddNpcInput(3, 1, "Yes");
+    action	AddNpcInput(3, 2, "No");
+    rule	TalkedToNpc(1) goto checkfour
+    rule	TalkedToNpc(2) goto GoReset
+}
+state check
+{
+    desc	"check purchase"
+    if	GotItems(1, 1000) goto Exchange
+    else	goto noGold
+}
+state noGold
+{
+    desc	"you don't have enough gold, make sure you do next time"
+    rule	TalkedToNpc(1) goto GoReset
+}
+state checktwo
+{
+    desc	"check purchase"
+    if	GotItems(1, 2000) goto Exchangetwo
+    else	goto noGold
+}
+state checkthree
+{
+    desc	"check purchase"
+    else	goto nogold
+    if	GotItems(1, 5000) goto Exchangethree
+    else	goto noGold
+}
+
+state checkfour
+{
+    desc	"check purchase"
+    if	GotItems(1, 10000) goto Exchangefour
+    else	goto noGold
+}
+
+
+
