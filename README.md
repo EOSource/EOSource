@@ -2,18 +2,12 @@
 
 Please compile using latest TDM Dragon with Codeblocks with MINGW
 
-1. Install CodeBlocks (latest codeblocks-20.03mingw-32bit-setup.exe) 
+1. Install CodeBlocks with MINGW 32-BIT ONLY
 (http://www.codeblocks.org/downloads/binaries/)
-2. Install TDM Dragon 32-bit
-(https://github.com/jmeubank/tdm-gcc/releases/download/v10.3.0-tdm-1/tdm-gcc-10.3.0.exe)
+2. Install TDM Dragon 4.6.1 (WILL ONLY WORK WITH THIS VERSION) INSTALL 32-BIT VERSION ONLY
+(https://eosource.net/files/tdm-gcc-4.6.1.zip
 3. For Windows open Project->mingw.cbp For Linux Project->Linux.cbp
 4. Press Build
-
-Common Compile Errors
-
-1. Problem: I get PTHREAD time_t error?
-2. Solution: Add HAVE_STRUCT_TIMESPEC to your #defines in codeblocks right click project->buildoptions->#defines
-
 ---
 Coming Soon
 -Fireserv support
