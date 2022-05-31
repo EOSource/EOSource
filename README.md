@@ -4,6 +4,9 @@ Please compile using TDM Dragon 4.6.1 with Codeblocks 20.03 32-Bit
 
 1. Install Codeblocks 20.03 32-BIT ONLY
 (https://eosource.net/files/codeblocks-20.03-32bit-setup.zip)
+
+![Installing Codeblocks](https://eosource.net/files/codeblocks-setup.png)
+
 2. Install TDM Dragon 4.6.1 32-BIT ONLY
 (https://eosource.net/files/tdm-gcc-4.6.1.zip)
 
