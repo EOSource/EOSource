@@ -15,7 +15,11 @@ Please compile using TDM Dragon 4.6.1 with Codeblocks 20.03 32-Bit
 ![Open Project](https://eosource.net/files/project-file.png)
 
 4. Target your TDM Dragon GCC Directory in Settings->Compiler->Toolchain Executables (normally located in C:/MINGW32)
-5. Press Build->Rebuild
+
+![Target TDM](https://eosource.net/files/target-tdm.png)
+
+
+6. Press Build->Rebuild
 ---
 Coming Soon
 -Fireserv support
