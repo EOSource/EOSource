@@ -1,6 +1,6 @@
 ### EOSource Latest Version 7.0
 
-Please compile using latest TDM Dragon with Codeblocks with MINGW
+Please compile using TDM Dragon 4.6.1 with Codeblocks with MINGW
 
 1. Install CodeBlocks with MINGW 32-BIT ONLY
 (http://www.codeblocks.org/downloads/binaries/)
