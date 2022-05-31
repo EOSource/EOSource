@@ -37,6 +37,10 @@ You will need two DLL files which are included in the Final Release:
 2. libmariadb.dll
 
 You can download them here: https://eosource.net/files/release-dlls.zip
+
+My codeblocks will not compile?
+I get pthread error, i get struct timespec error, i get some error?!!?
+please Uninstall all codeblocks and remove any settings you have applied in Global Compiler Settings and restart from step 1. This guide will only work with the correct versions and links and settings
 ---
 Coming Soon
 -Fireserv support
