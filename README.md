@@ -1,6 +1,6 @@
 ### EOSource Latest Version 7.0
 
-Please compile using TDM Dragon 4.6.1 with Codeblocks 20.03 32-Bit
+Please compile using TDM Dragon 4.6.1 with Codeblocks 20.03 32-Bit (Windows Guide)
 
 1. Install Codeblocks 20.03 32-BIT ONLY
 (https://eosource.net/files/codeblocks-20.03-32bit-setup.zip)
@@ -14,7 +14,7 @@ Please compile using TDM Dragon 4.6.1 with Codeblocks 20.03 32-Bit
 ![Installing TDM Dragon](https://eosource.net/files/tdm-setup.png)
 ![Installing TDM Dragon](https://eosource.net/files/tdm-setup-2.png)
 
-3. For Windows open Project->mingw.cbp For Linux Project->Linux.cbp
+3. For Windows open Project->mingw.cbp
 
 ![Open Project](https://eosource.net/files/project-file.png)
 
