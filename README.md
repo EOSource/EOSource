@@ -21,6 +21,8 @@ Please compile using TDM Dragon 4.6.1 with Codeblocks 20.03 32-Bit
 
 
 6. Press Build->Rebuild
+
+![Rebuild](https://eosource.net/files/rebuild.png)
 ---
 Coming Soon
 -Fireserv support
