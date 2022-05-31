@@ -23,6 +23,16 @@ Please compile using TDM Dragon 4.6.1 with Codeblocks 20.03 32-Bit
 6. Press Build->Rebuild
 
 ![Rebuild](https://eosource.net/files/rebuild.png)
+
+Great! I compiled EOSource.exe but now i get Errors when trying to open it!
+
+![Rebuild](https://eosource.net/files/errors.png)
+
+You will need two DLL files which are included in the Final Release:
+1. pthreadGC2.dll
+2. libmariadb.dll
+
+You can download them here: https://eosource.net/files/release-dlls.zip
 ---
 Coming Soon
 -Fireserv support
