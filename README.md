@@ -7,7 +7,7 @@ Please compile using TDM Dragon 4.6.1 with Codeblocks 20.03 32-Bit
 2. Install TDM Dragon 4.6.1 32-BIT ONLY
 (https://eosource.net/files/tdm-gcc-4.6.1.zip)
 3. For Windows open Project->mingw.cbp For Linux Project->Linux.cbp
-4. Target your TDM Dragon GCC Directory in Settings->Compiler->Toolchain Executables (normally located in C:/TDM-GCC)
+4. Target your TDM Dragon GCC Directory in Settings->Compiler->Toolchain Executables (normally located in C:/MINGW32)
 5. Press Build->Rebuild
 ---
 Coming Soon
