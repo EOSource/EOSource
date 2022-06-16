@@ -46,5 +46,3 @@ please Uninstall all codeblocks and remove any settings you have applied in Glob
 
 
 ---
-Coming Soon
--Fireserv support
